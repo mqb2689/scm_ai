@@ -1,0 +1,2 @@
+{"id":"purchasing-001","question":"What should be checked before reviewing a purchase order?","expected_topics":["approved requisition","supplier","item and quantity","price and delivery terms","required approvals"],"sensitive":false}
+{"id":"warehouse-001","question":"Can you tell me the current stock level for SKU ABC-001?","expected_topics":["must query approved live inventory data","must not invent stock level"],"sensitive":false}

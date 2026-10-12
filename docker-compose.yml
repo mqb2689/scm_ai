@@ -1,0 +1,36 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: private-domain-ai-ollama
+    restart: unless-stopped
+    volumes:
+      - ollama_data:/root/.ollama
+    # Not published to the host by default. The API reaches Ollama over the Compose network.
+    networks:
+      - ai_internal
+
+  ai-api:
+    build:
+      context: ./services/ai-api
+    container_name: private-domain-ai-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      KNOWLEDGE_DIR: /app/data/knowledge
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./data/knowledge:/app/data/knowledge:ro
+    depends_on:
+      - ollama
+    networks:
+      - ai_internal
+
+networks:
+  ai_internal:
+    internal: true
+
+volumes:
+  ollama_data:

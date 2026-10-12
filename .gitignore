@@ -1,0 +1,46 @@
+# Secrets and environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# AI model weights and caches
+models/
+*.gguf
+*.safetensors
+.huggingface/
+.cache/
+
+# Private business data
+data/private/
+data/raw/
+data/processed/
+datasets/private/
+uploads/
+
+# Logs and databases
+logs/
+*.log
+*.sqlite3
